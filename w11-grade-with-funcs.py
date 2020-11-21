@@ -19,15 +19,21 @@ def get_suffix(grade):
         return "-"
     return ""
 
-grades = []
-for i in range(5):
-    grades.append(float(input("What was your score? ")))
-average = sum(grades) / len(grades)
+def main():
+    classes = ["Math", "English", "PE", "Science", "Art"]
+    grades = []
+    for class_name in classes:
+        grades.append(float(input(f"What was your score in {class_name}? ")))
+    print()
+    for i in range(len(grades)):
+        class_name = classes[i]
+        grade = grades[i]
+        letter = get_letter(grade)
+        suffix = get_suffix(grade)
+        print(f"Your {class_name} score was {grade}, you got {letter}{suffix}")
 
-letter = get_letter(average)
-suffix = get_suffix(average)
-
-print(f"For an average score of {average} your grade is a {letter}{suffix}")
+if __name__ == "__main__":
+    main()
 
 # TESTS
 assert get_suffix(82.9) == "-"
